@@ -80,9 +80,11 @@ namespace ds::utils
     template <class List>
     void ListAnalyzer<List>::growToSize(List& structure, size_t size)
     {
-        // TODO 01
-        // po implementacii vymazte vyhodenie vynimky!
-        throw std::runtime_error("Not implemented yet");
+        size_t count = size - structure.size();
+        for (int i = count; i < size; i++) 
+        {
+            structure.push_back(i)
+        }
     }
 
     template<class List>
@@ -108,9 +110,7 @@ namespace ds::utils
     template <class List>
     void ListInsertAnalyzer<List>::executeOperation(List& structure)
     {
-        // TODO 01
-        // po implementacii vymazte vyhodenie vynimky!
-        throw std::runtime_error("Not implemented yet");
+        structure.insert(structure.begin(), this->getRandomData());
     }
 
     //----------

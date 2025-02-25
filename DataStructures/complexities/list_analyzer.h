@@ -74,7 +74,13 @@ namespace ds::utils
         index_(0),
         data_(0)
     {
-        // TODO 01
+        ComplexityAnalyzer<List>::registerBeforeOperation(
+            [this](List& list) {
+                std::uniform_int_distribution<size_t> dist(0, list.size() -1);
+                this->index_ = dist(this->rngIndex_);
+                this->data_ = this->rngData_();
+            }
+        );
     }
 
     template <class List>
@@ -83,7 +89,7 @@ namespace ds::utils
         size_t count = size - structure.size();
         for (int i = count; i < size; i++) 
         {
-            structure.push_back(i)
+            structure.push_back(i);
         }
     }
 
@@ -136,7 +142,7 @@ namespace ds::utils
     {
         this->addAnalyzer(std::make_unique<ListInsertAnalyzer<std::vector<int>>>("vector-insert"));
         this->addAnalyzer(std::make_unique<ListInsertAnalyzer<std::list<int>>>("list-insert"));
-        this->addAnalyzer(std::make_unique<ListRemoveAnalyzer<std::vector<int>>>("vector-remove"));
-        this->addAnalyzer(std::make_unique<ListRemoveAnalyzer<std::list<int>>>("list-remove"));
+        //this->addAnalyzer(std::make_unique<ListRemoveAnalyzer<std::vector<int>>>("vector-remove"));
+        //this->addAnalyzer(std::make_unique<ListRemoveAnalyzer<std::list<int>>>("list-remove"));
     }
 }

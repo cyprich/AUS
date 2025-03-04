@@ -18,7 +18,7 @@ std::vector<std::unique_ptr<ds::tests::Test>> createTests()
 	mm->add_test(std::make_unique<ds::tests::MemoryManagerTest>());
 
 	// TODO 02
-	//mm->add_test(std::make_unique<ds::tests::CompactMemoryManagerTest>());
+	mm->add_test(std::make_unique<ds::tests::CompactMemoryManagerTest>());
 
 	// TODO 03
 	//amt->add_test(std::make_unique<ds::tests::ImplicitSequenceTest>());

@@ -94,15 +94,15 @@ namespace ds::mm {
             this->changeCapacity(this->getCapacity > 0 ? this->getCapacity() * 2 : INIT_SIZE);
         }
 
-        BlockType* start = this->base_ + index;
+        BlockType* src = this->base_ + index;
         BlockType* dest = this->base_ + index + 1;
         size_t size = (this->end_ - index) * sizeof(BlockType);
-        std::memmove(dest, start, size);
+        std::memmove(dest, src, size);
         
         ++this->end_;
         ++this->allocatedBlockCount;
 
-        return placement_new(start);  // zavola sa konstruktor tam kde sme alokovali pamat
+        return placement_new(src);  // zavola sa konstruktor tam kde sme alokovali pamat
     }
 
     template<typename BlockType>
